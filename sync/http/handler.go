@@ -147,7 +147,10 @@ func handleError(w http.ResponseWriter, enc encoding.EncodeFunc, err error) {
 			return
 		}
 		w.WriteHeader(err.code)
-		w.Write(p)
+		_, err := w.Write(p)
+		if err != nil {
+			log.Errorf("failed to write response: %v", err)
+		}
 		return
 	}
 	// Using http.Error helper hijacks the content type header of the response returning plain text payload.
