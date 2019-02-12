@@ -39,7 +39,7 @@ type Service struct {
 func New(name, version string, oo ...OptionFunc) (*Service, error) {
 
 	if name == "" {
-		return nil, errors.New("name is required")
+		return nil, errors.New("name 111 is required")
 	}
 
 	if version == "" {
